@@ -4,9 +4,10 @@
 #include <math.h>
 #include <string.h>
 
-#define MAX_ITERACOES 1000000000
+#define MAX_ITERACOES 100000
+#define ITERACOES_VER 10
 
-const double EPSILON = 0.00000001;
+const double EPSILON = 0.00001;
 
 void trocaLinhas(double **l1,double **l2){
     double *temp = *l1;
@@ -95,7 +96,7 @@ void gauss_jacobi(double **m, int n, double *x){
             x[i] = (m[i][n] - S)/m[i][i];
         }
 
-        if (k%1000 == 0 && verifica_erro(x,x_ant,n))
+        if (k%ITERACOES_VER == 0 && verifica_erro(x,x_ant,n))
         {
             free(x_ant);
             return;

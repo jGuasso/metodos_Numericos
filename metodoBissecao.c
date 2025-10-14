@@ -38,11 +38,12 @@ double fx(double x){
 int main(){
     double a, b, episolon,resultado;
 
-    printf("a, b, episolon:\n");
-    scanf("%lf, %lf, %lf",&a, &b, &episolon);
+    printf("a b episolon:\n");
+    scanf("%lf %lf %lf",&a, &b, &episolon);
     if (!bolzano(fx,a,b))
     {
         printf("\nIntervalo Invalido!\n");
+        return 1;
     }
     resultado = metodo_bissecao(fx,a,b,episolon);
     printf("\n%lf\n",resultado);

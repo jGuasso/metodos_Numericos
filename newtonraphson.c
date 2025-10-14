@@ -1,9 +1,16 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <math.h>
 
 double newton_raphson(double(*funcao)(double),double(*derivada)(double),double x,double epsilon){
     while (fabs(funcao(x))>epsilon)
     {
+        if (fabs(derivada(x))<0.000001)
+        {
+            printf("ERRO: f'(%lf) = 0",x);
+            exit(1);
+        }
+        
         x = x - funcao(x)/derivada(x);
     }
     return x;
@@ -19,8 +26,8 @@ double dx(double x){
 
 int main(){
     double a,episolon,resultado;
-    printf("a, episolon:\n");
-    scanf("%lf, %lf",&a, &episolon);
+    printf("a episolon:\n");
+    scanf("%lf %lf",&a, &episolon);
     resultado = newton_raphson(fx,dx,a,episolon);
     printf("\n%lf\n",resultado);
 }

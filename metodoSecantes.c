@@ -14,13 +14,13 @@ double metodo_das_secantes(double(*funcao)(double),double x1, double x2, double 
 }
 
 double fx(double x){
-    return x - 8*log2(x);
+    return 8*log2(x) - x;
 }
 
 int main(){
     double a,b,episolon,resultado;
-    printf("a, b, episolon:\n");
-    scanf("%lf, %lf, %lf",&a, &b, &episolon);
+    printf("a b episolon:\n");
+    scanf("%lf %lf %lf",&a, &b, &episolon);
     resultado = metodo_das_secantes(fx,a,b,episolon);
     printf("\n%lf\n",resultado);
 }

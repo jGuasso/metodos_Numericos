@@ -18,6 +18,7 @@ void printMatriz(double** m,int n){
     }   
 }
 
+//Matriz LU compacta
 void escalonamentoLU(double **LU, double** P, int n){
 
     for (int i = 0; i < n-1; i++)
@@ -45,23 +46,21 @@ void escalonamentoLU(double **LU, double** P, int n){
 
 
 double* substituicao(double** LU, double** P, double* b, int n){
-    double *bl = (double*)malloc(sizeof(double)*n); 
     double *y = (double*)malloc(sizeof(double)*n);
     double *x = (double*)malloc(sizeof(double)*n);
     double aux;
 
     for (int i = 0; i < n; i++)
     {
-        bl[i]=0;
+        y[i]=0;
         for (int j = 0; j < n; j++)
         {
-            bl[i] += P[i][j]*b[j];
+            y[i] += P[i][j]*b[j];
         }
     }
     
     for (int i = 0; i < n; i++)
     {
-        y[i] = bl[i];
         for (int j = 0; j < i; j++)
         {
             y[i] -= LU[i][j] * y[j];
@@ -77,7 +76,6 @@ double* substituicao(double** LU, double** P, double* b, int n){
         }
         x[i] = aux/LU[i][i];
     }
-    free(bl);
     free(y);
     return x;
 }
@@ -125,6 +123,8 @@ int main(){
         {
             scanf("%lf",&b[i]);
         }
+        
+        if (x!=NULL)free(x);
         x = substituicao(LU,P,b,n);
         for (int i = 0; i < n; i++)
         {
