@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <math.h>
 
-double ** cria_matriz(int n, double* x_arr, double* y_arr){
+double ** interpolacao_definicao(int n, double* x_arr, double* y_arr){
     double** A = (double**) malloc(sizeof(double*)*n);
     for (int i = 0; i < n; i++)
     {
@@ -76,12 +76,26 @@ int main(){
         scanf("%lf",&y_arr[i]);
     }
     
-    double **A = cria_matriz(n,x_arr,y_arr);
+    double **A = interpolacao_definicao(n,x_arr,y_arr);
 
     double *a = escalonamento(A,n);
     for (int i = 0; i < n; i++)
     {
-        printf("%lf, ",a[i]);
+        printf("a%d=%lf\n",i,a[i]);
+    }
+    double x,r,xpow;
+    while (1)
+    {
+        printf("Digite o valor de x:\n");
+        scanf("%lf",&x);
+        xpow=1;
+        r=0;
+        for (int i = 0; i < n; i++)
+        {
+            r+=a[i]*xpow;
+            xpow*=x;
+        }
+        printf("%lf\n",r);
     }
     
 }
