@@ -10,30 +10,6 @@ __declspec(dllexport) double d1(double x){
     return 2*x;
 }
 
-__declspec(dllexport) double f2(double x) {
-    return (x*x*x)-x-2;
-}
-
-__declspec(dllexport) double d2(double x){
-    return 3*(x*x)-1;
-}
-
-__declspec(dllexport) double f3(double x) {
-    return (x*x*x*x*x)-x-1;
-}
-
-__declspec(dllexport) double d3(double x) {
-    return 5*(x*x*x*x)-1;
-}
-
-__declspec(dllexport) double f4(double x) {
-    return cos(x) - x;
-}
-
-__declspec(dllexport) double d4(double x) {
-    return -sin(x) - 1;
-}
-
 
 /*
 * Método da Bisseção
